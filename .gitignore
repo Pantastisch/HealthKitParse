@@ -123,3 +123,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# VS Code stuff
+.vscode/
+
+# Apple stuff
+.DS_Store
+
+# Input/output data
+input/*
+output/*
