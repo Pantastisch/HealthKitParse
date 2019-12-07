@@ -1,3 +1,4 @@
+import datetime
 import xml.etree.ElementTree as ET
 import zipfile
 
@@ -87,7 +88,7 @@ class HKP_RecordData:
     '''Class which is containing one datapoint of a Healthkit Record'''
     def __init__(self, date, value):
         super().__init__()
-        self.Date = date
+        self.Date = datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S %z')
         self.Value = value
 
 
