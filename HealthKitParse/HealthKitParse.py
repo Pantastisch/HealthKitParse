@@ -36,7 +36,7 @@ class HKP_Record:
                 if (child.attrib['type'] == self.__recordType__.HealthKitType):
                     date = child.attrib['startDate']
                     value = child.attrib['value']
-                    records.append({'date' : date, 'value' : value})
+                    records.append(HKP_RecordData(date, value))
 
         self.__records__ = records
 
@@ -81,6 +81,15 @@ class HKP_RecordType:
     @property
     def HealthKitType(self):
         return self.__recordTypes__[self.__recordType__]['healthKitType']
+
+
+class HKP_RecordData:
+    '''Class which is containing one datapoint of a Healthkit Record'''
+    def __init__(self, date, value):
+        super().__init__()
+        self.Date = date
+        self.Value = value
+
 
 if __name__ == "__main__":
     main()
