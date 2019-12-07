@@ -4,6 +4,7 @@ import zipfile
 def main():
     systBloodPleasureData = HKP_Record('HKP_BloodPressureSystolic')
     diastBloodPleasureData = HKP_Record('HKP_BloodPressureDiastolic')
+    heartRate = HKP_Record('HKP_HeartRate')
 
     pass
 
@@ -51,6 +52,10 @@ class HKP_RecordType:
         'HKP_BloodPressureDiastolic' : {
             'healthKitType' : 'HKQuantityTypeIdentifierBloodPressureDiastolic',
             'unit' : 'mmHg'
+        },
+        'HKP_HeartRate' : {
+            'healthKitType' : 'HKQuantityTypeIdentifierHeartRate',
+            'unit' : 'count/min'
         }
     }
 
