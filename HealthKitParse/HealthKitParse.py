@@ -1,3 +1,4 @@
+import csv
 import datetime
 import xml.etree.ElementTree as ET
 import zipfile
@@ -6,6 +7,10 @@ def main():
     systBloodPleasureData = HKP_Record('HKP_BloodPressureSystolic')
     diastBloodPleasureData = HKP_Record('HKP_BloodPressureDiastolic')
     heartRate = HKP_Record('HKP_HeartRate')
+
+    systBloodPleasureData.OutputCsv()
+    diastBloodPleasureData.OutputCsv()
+    heartRate.OutputCsv()
 
     pass
 
@@ -40,6 +45,16 @@ class HKP_Record:
                     records.append(HKP_RecordData(date, value))
 
         self.__records__ = records
+
+    def OutputCsv(self):
+        with open('output/' + self.RecordType + '.csv', mode='w') as csvFile:
+            csvOut = csv.writer(csvFile, delimiter=';', quotechar='"')
+
+            csvOut.writerow(['Date', 'Value'])
+
+            for i in self.Records:
+                csvOut.writerow([i.Date, i.Value])
+        pass
 
 
 class HKP_RecordType:
